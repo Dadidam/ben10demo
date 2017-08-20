@@ -1,6 +1,13 @@
 import React from 'react';
 import update from 'react-addons-update';
-import { Panel, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { 
+  Panel, 
+  FormGroup, 
+  ControlLabel, 
+  FormControl, 
+  Button, 
+  Alert 
+} from 'react-bootstrap';
 
 export default class EventAdd extends React.Component {
   static get contextTypes() {
@@ -73,6 +80,12 @@ export default class EventAdd extends React.Component {
   }
 
   render() {
+    if (this.state.types.length === 0 || this.state.companies.length === 0) {
+      return <Alert bsStyle="warning">
+        <strong>So far you can not add events.</strong> Use <a href="/#/settings">settings</a> to add at least one type and one company.
+      </Alert>
+    }
+
     return (
       <Panel header="Add Event">
         <form name="eventAdd">

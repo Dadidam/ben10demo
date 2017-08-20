@@ -148,12 +148,14 @@ export default class EventList extends React.Component {
   render() {
     return (
       <div>
-        <EventFilter 
-          submitHandler={this.changeFilter} 
-          initFilter={this.props.location.query} 
-          eventTypes={this.state.eventTypes}
-          companies={this.state.companies}
-        />
+        {this.state.events.length ?
+          <EventFilter 
+            submitHandler={this.changeFilter} 
+            initFilter={this.props.location.query} 
+            eventTypes={this.state.eventTypes}
+            companies={this.state.companies}
+          /> : (null)
+        }
         <EventTable 
           events={this.state.events}
           eventTypes={this.state.eventTypes}
